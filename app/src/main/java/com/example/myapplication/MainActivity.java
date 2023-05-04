@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,7 +61,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refreshButtonCicked(View view) {
+        webViewMain.reload();
+    }
 
+    @Override
+    public void onBackPressed(){
+        if(webViewMain.canGoBack()){
+            webViewMain.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }
